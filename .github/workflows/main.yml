@@ -24,12 +24,12 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          cd no_confirm
+          cd mod-ci
           gradle build
 
       - name: Upload jar artifact
         uses: actions/upload-artifact@v4
         with:
           name: no-command-confirm-jar
-          path: no_confirm/build/libs/no-command-confirm-*.jar
+          path: mod-ci/build/libs/no-command-confirm-*.jar
           if-no-files-found: error
