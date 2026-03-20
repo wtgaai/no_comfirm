@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "no_command_confirm",
+  "version": "${version}",
+  "name": "No Command Confirm",
+  "description": "Disables the command execution confirmation dialog triggered by books and dialogs.",
+  "authors": [],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.example.nocommandconfirm.NoCommandConfirmClient"
+    ]
+  },
+  "mixins": [
+    "no_command_confirm.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11"
+  }
+}
