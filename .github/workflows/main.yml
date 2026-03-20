@@ -23,11 +23,13 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Build with Gradle
-        run: gradle build
+        run: |
+          cd no_confirm
+          gradle build
 
       - name: Upload jar artifact
         uses: actions/upload-artifact@v4
         with:
           name: no-command-confirm-jar
-          path: build/libs/no-command-confirm-*.jar
+          path: no_confirm/build/libs/no-command-confirm-*.jar
           if-no-files-found: error
