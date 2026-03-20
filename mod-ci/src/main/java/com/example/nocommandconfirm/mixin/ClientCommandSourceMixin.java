@@ -1,6 +1,5 @@
 package com.example.nocommandconfirm.mixin;
 
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.network.ClientPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,9 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ClientCommandSourceMixin {
 
     @Inject(method = "handleRunCommand", at = @At("HEAD"), cancellable = true)
-    private void skipCommandConfirmation(String command, CallbackInfo ci) {
+    private static void skipCommandConfirmation(ClientPlayerEntity player, String command, Screen screen, CallbackInfo ci) {
         ci.cancel();
-        ClientPlayerEntity player = MinecraftClient.getInstance().player;
         if (player != null) {
             String cmd = command.startsWith("/") ? command : "/" + command;
             player.networkHandler.sendChatMessage(cmd);
