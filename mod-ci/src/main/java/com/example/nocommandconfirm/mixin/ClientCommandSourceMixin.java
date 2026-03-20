@@ -16,9 +16,8 @@ public class ClientCommandSourceMixin {
         ci.cancel();
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
         if (player != null) {
-            // sendChatMessage は "/" で始まるとコマンドとして送信される
             String cmd = command.startsWith("/") ? command : "/" + command;
-            player.sendChatMessage(cmd, null);
+            player.networkHandler.sendChatMessage(cmd);
         }
     }
 }
